@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Gift For Chikuu 💝</title>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -81,7 +81,6 @@ body {
   100% { background-position: -200% 0; }
 }
 
-/* ── Anime image placeholder while loading ── */
 .anime-img {
   object-fit: cover;
   object-position: top center;
@@ -109,7 +108,6 @@ body {
   transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1);
 }
 .polaroid-lock:hover { transform: rotate(-1deg) scale(1.04); }
-
 .polaroid-lock .bow {
   position: absolute; top: -32px; left: 50%;
   transform: translateX(-50%);
@@ -152,7 +150,6 @@ body {
   text-align: center; margin-top: 8px; letter-spacing: 0.5px;
 }
 
-/* Keypad */
 .keypad-section { text-align: center; position: relative; z-index: 1; }
 .keypad-label {
   color: rgba(255,255,255,0.92);
@@ -331,89 +328,52 @@ body {
   display: flex; align-items: center; justify-content: center;
   backdrop-filter: blur(12px);
   transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
-  box-shadow:
-    0 4px 28px rgba(0,0,0,0.22),
-    inset 0 1px 0 rgba(255,255,255,0.18);
+  box-shadow: 0 4px 28px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.18);
   position: relative; overflow: hidden;
 }
-/* Conic shimmer */
 .hub-icon-wrap::before {
   content: '';
   position: absolute; inset: -2px;
-  background: conic-gradient(
-    from 0deg,
-    rgba(255,255,255,0),
-    rgba(255,255,255,0.18),
-    rgba(255,255,255,0),
-    rgba(255,255,255,0.1),
-    rgba(255,255,255,0)
-  );
+  background: conic-gradient(from 0deg, rgba(255,255,255,0), rgba(255,255,255,0.18), rgba(255,255,255,0), rgba(255,255,255,0.1), rgba(255,255,255,0));
   border-radius: 50%;
   animation: conicSpin 4s linear infinite;
   opacity: 0; transition: opacity 0.3s;
 }
 @keyframes conicSpin { to { transform: rotate(360deg); } }
-/* Inner pulse ring */
 .hub-icon-wrap::after {
-  content: '';
-  position: absolute; inset: 0;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0);
-  transition: all 0.35s;
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0); transition: all 0.35s;
 }
 .hub-item:hover .hub-icon-wrap {
   background: rgba(255,255,255,0.25);
   border-color: rgba(255,255,255,0.72);
   transform: scale(1.13) !important;
-  box-shadow:
-    0 0 40px rgba(255,170,170,0.55),
-    0 8px 30px rgba(0,0,0,0.28),
-    inset 0 1px 0 rgba(255,255,255,0.3);
+  box-shadow: 0 0 40px rgba(255,170,170,0.55), 0 8px 30px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.3);
   animation: none !important;
 }
 .hub-item:hover .hub-icon-wrap::before { opacity: 1; }
-.hub-item:hover .hub-icon-wrap::after {
-  border-color: rgba(255,255,255,0.3);
-  inset: 6px;
-}
+.hub-item:hover .hub-icon-wrap::after { border-color: rgba(255,255,255,0.3); inset: 6px; }
 .hub-item:active .hub-icon-wrap { transform: scale(0.88) !important; }
-
-/* Per-item float animations */
 .hub-item:nth-child(1) .hub-icon-wrap { animation: floatA 3.1s ease-in-out infinite; }
 .hub-item:nth-child(2) .hub-icon-wrap { animation: floatB 3.6s ease-in-out infinite; }
 .hub-item:nth-child(3) .hub-icon-wrap { animation: floatC 2.9s ease-in-out infinite; }
-@keyframes floatA {
-  0%,100% { transform: translateY(0) rotate(0deg); }
-  33%      { transform: translateY(-11px) rotate(2.5deg); }
-  66%      { transform: translateY(-5px) rotate(-1.5deg); }
-}
-@keyframes floatB {
-  0%,100% { transform: translateY(0) rotate(0deg); }
-  50%      { transform: translateY(-14px) rotate(-2.5deg); }
-}
-@keyframes floatC {
-  0%,100% { transform: translateY(0) rotate(0deg); }
-  38%      { transform: translateY(-8px) rotate(3.5deg); }
-  76%      { transform: translateY(-13px) rotate(-2deg); }
-}
-/* Orbiting dot */
+@keyframes floatA { 0%,100% { transform: translateY(0) rotate(0deg); } 33% { transform: translateY(-11px) rotate(2.5deg); } 66% { transform: translateY(-5px) rotate(-1.5deg); } }
+@keyframes floatB { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-14px) rotate(-2.5deg); } }
+@keyframes floatC { 0%,100% { transform: translateY(0) rotate(0deg); } 38% { transform: translateY(-8px) rotate(3.5deg); } 76% { transform: translateY(-13px) rotate(-2deg); } }
 .orbit-ring {
   position: absolute; inset: 0; border-radius: 50%;
   animation: orbitRing 2.8s linear infinite;
   opacity: 0; transition: opacity 0.3s;
 }
 .orbit-ring::before {
-  content: '';
-  position: absolute;
+  content: ''; position: absolute;
   width: 8px; height: 8px;
-  background: rgba(255,255,255,0.85);
-  border-radius: 50%;
+  background: rgba(255,255,255,0.85); border-radius: 50%;
   top: 4px; left: 50%; margin-left: -4px;
   box-shadow: 0 0 8px rgba(255,255,255,0.8);
 }
 @keyframes orbitRing { to { transform: rotate(360deg); } }
 .hub-item:hover .orbit-ring { opacity: 1; }
-
 .hub-icon-svg { width: 56px; height: 56px; position: relative; z-index: 1; }
 .hub-icon-label {
   font-size: 0.71rem; color: rgba(255,255,255,0.88);
@@ -421,57 +381,245 @@ body {
   font-weight: 700; font-family: 'Nunito', sans-serif;
 }
 
-/* ═══════════════════════════════
-   PAGE 5 — LETTER
-═══════════════════════════════ */
-#page-letter { background: #f7ede9; }
-.letter-outer {
-  width: 552px; max-width: 95vw;
-  background: #fff;
-  box-shadow: 0 18px 72px rgba(0,0,0,0.17);
-  position: relative; overflow: hidden;
+/* ═══════════════════════════════════════════════
+   PAGE 5 — LETTER (upgraded — matches reference)
+═══════════════════════════════════════════════ */
+#page-letter {
+  background: radial-gradient(ellipse at 50% 30%, #f5e8e0 0%, #ede0d8 100%);
+  padding: 30px 20px;
+  overflow-y: auto;
 }
-.scallop-edge { height: 18px; position: relative; background: #f7ede9; }
-.scallop-edge.top::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 18px;
-  background: radial-gradient(circle at 9px 0px, #f7ede9 11px, white 11px) repeat-x;
-  background-size: 18px 18px;
+
+.letter-envelope-wrap {
+  width: 580px; max-width: 96vw;
+  position: relative;
 }
-.scallop-edge.bottom { background: white; }
-.scallop-edge.bottom::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 18px;
-  background: radial-gradient(circle at 9px 18px, #f7ede9 11px, white 11px) repeat-x;
-  background-size: 18px 18px;
+
+/* The actual letter card */
+.letter-card {
+  background: #fefcfa;
+  box-shadow:
+    0 2px 0 #d4b8ac,
+    0 6px 0 #c9a898,
+    0 24px 60px rgba(90,30,20,0.22),
+    0 4px 16px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
 }
-.letter-inner { padding: 22px 40px 28px; background: white; }
-.letter-header { text-align: center; padding-bottom: 16px; border-bottom: 1px solid #ead8d0; margin-bottom: 18px; }
-.letter-title-text {
-  font-size: 0.88rem; font-weight: 700; letter-spacing: 5px;
-  color: #c0392b; text-transform: uppercase;
-  font-family: 'Playfair Display', serif;
+
+/* Top scallop border */
+.letter-scallop-top {
+  height: 22px;
+  background: #ede0d8;
+  position: relative;
+  overflow: hidden;
 }
-.letter-meta { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.75rem; color: #ccc; font-style: italic; }
-.letter-photos { float: right; margin: 0 0 14px 18px; display: flex; flex-direction: column; gap: 8px; }
-.letter-photo {
-  width: 80px; height: 80px; object-fit: cover; object-position: top center;
-  border: 3px solid white; outline: 1px solid #ead8d0;
-  box-shadow: 3px 4px 16px rgba(0,0,0,0.13);
+.letter-scallop-top::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 22px;
+  background: radial-gradient(circle at 11px 22px, #ede0d8 13px, #fefcfa 13px) repeat-x;
+  background-size: 22px 22px;
+}
+
+/* Bottom scallop border */
+.letter-scallop-bottom {
+  height: 22px;
+  background: #fefcfa;
+  position: relative;
+  overflow: hidden;
+}
+.letter-scallop-bottom::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 22px;
+  background: radial-gradient(circle at 11px 0px, #ede0d8 13px, #fefcfa 13px) repeat-x;
+  background-size: 22px 22px;
+}
+
+/* Side decorative border strips */
+.letter-body-wrap {
+  padding: 0;
+  position: relative;
+}
+.letter-body-wrap::before,
+.letter-body-wrap::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; width: 22px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #f5e0d5 0px, #f5e0d5 11px,
+    #fefcfa 11px, #fefcfa 22px
+  );
+}
+.letter-body-wrap::before { left: 0; }
+.letter-body-wrap::after { right: 0; }
+
+.letter-inner {
+  padding: 28px 44px 32px;
+  background: #fefcfa;
+  position: relative;
+  z-index: 1;
+}
+
+/* Rose corner decorations */
+.letter-rose-tl, .letter-rose-tr, .letter-rose-bl, .letter-rose-br {
+  position: absolute;
+  font-size: 1.6rem;
+  opacity: 0.45;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+.letter-rose-tl { top: 6px; left: 6px; transform: rotate(-20deg); }
+.letter-rose-tr { top: 6px; right: 6px; transform: rotate(20deg) scaleX(-1); }
+.letter-rose-bl { bottom: 6px; left: 6px; transform: rotate(20deg); }
+.letter-rose-br { bottom: 6px; right: 6px; transform: rotate(-20deg) scaleX(-1); }
+
+/* Header */
+.letter-header {
+  text-align: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e2cdc4;
+  margin-bottom: 20px;
+  position: relative; z-index: 1;
+}
+.letter-header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem; font-weight: 600;
+  letter-spacing: 6px; text-transform: uppercase;
+  color: #8b3a2a;
+}
+.letter-header-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 0.75rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: #b5897a;
+}
+.letter-header-line .to-from {
+  display: flex; gap: 24px;
+}
+.letter-header-line .to-from span {
+  display: flex; align-items: center; gap: 5px;
+}
+.letter-header-line .to-from span em {
+  font-style: normal;
+  font-weight: 600;
+  color: #8b3a2a;
+  font-size: 0.88rem;
+}
+
+/* Wax seal */
+.wax-seal {
+  width: 48px; height: 48px;
+  background: radial-gradient(circle at 38% 35%, #e05555, #a82020);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 10px rgba(140,30,30,0.45), inset 0 1px 0 rgba(255,160,160,0.3);
+  flex-shrink: 0;
+  position: relative;
+}
+.wax-seal::before {
+  content: '';
+  position: absolute; inset: 5px;
+  border: 1.5px solid rgba(255,180,180,0.35);
+  border-radius: 50%;
+}
+.wax-seal span {
+  font-size: 1.15rem;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+}
+
+/* Photo strip — right float */
+.letter-photo-strip {
+  float: right;
+  margin: 0 0 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative; z-index: 1;
+}
+.letter-photo-frame {
+  background: white;
+  padding: 5px 5px 20px 5px;
+  box-shadow: 3px 5px 18px rgba(0,0,0,0.18);
+  width: 92px;
   transition: transform 0.3s ease;
-  background: linear-gradient(135deg, #ff9fd8, #ff6bae);
 }
-.letter-photo:hover { transform: scale(1.07) rotate(-1.5deg); }
-.letter-salutation { font-family: 'Dancing Script', cursive; font-size: 1.75rem; color: #c0392b; margin-bottom: 12px; display: block; }
-.letter-body { font-size: 0.83rem; color: #666; line-height: 2.15; font-family: 'Poppins', sans-serif; font-weight: 300; }
-.letter-sign { font-family: 'Dancing Script', cursive; font-size: 1.3rem; color: #aaa; margin-top: 18px; display: block; }
-.letter-heart { text-align: center; margin-top: 10px; font-size: 1.7rem; clear: both; }
+.letter-photo-frame:nth-child(1) { transform: rotate(-2deg); }
+.letter-photo-frame:nth-child(2) { transform: rotate(1.5deg); }
+.letter-photo-frame:hover { transform: rotate(0deg) scale(1.06) !important; }
+.letter-photo-frame img {
+  width: 82px; height: 82px;
+  object-fit: cover; object-position: top center;
+  display: block;
+  background: linear-gradient(135deg, #ff9fd8, #ff6bae, #c0392b);
+}
+.letter-photo-frame .p-caption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 0.65rem; color: #bbb;
+  text-align: center; margin-top: 3px;
+  line-height: 1;
+}
+
+/* Salutation */
+.letter-salutation {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.1rem; color: #a83030;
+  display: block; margin-bottom: 14px;
+  position: relative; z-index: 1;
+  text-shadow: 0 1px 4px rgba(168,48,48,0.15);
+}
+
+/* Body text */
+.letter-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.04rem;
+  color: #5c3a30;
+  line-height: 2.1;
+  position: relative; z-index: 1;
+}
+.letter-body p { margin-bottom: 12px; }
+
+/* Divider line */
+.letter-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #dcc0b5 25%, #dcc0b5 75%, transparent);
+  margin: 18px 0;
+  clear: both;
+  position: relative; z-index: 1;
+}
+
+/* Signature */
+.letter-sign-wrap {
+  display: flex; justify-content: flex-end;
+  align-items: center; gap: 14px;
+  position: relative; z-index: 1;
+}
+.letter-sign {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.6rem; color: #a83030;
+  text-align: right;
+}
+.letter-heart-stamp {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 2px 8px rgba(180,50,50,0.35));
+  animation: heartStampPulse 2s ease-in-out infinite;
+}
+@keyframes heartStampPulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
 
 /* ═══════════════════════════════
-   PAGE 6 — GALLERY
+   PAGE 6 — GALLERY (upgraded bigger cards)
 ═══════════════════════════════ */
 #page-gallery {
   background: linear-gradient(145deg, #0c2461 0%, #1e3799 45%, #0c2461 100%);
   position: relative; overflow: hidden;
-  flex-direction: column; gap: 18px;
+  flex-direction: column; gap: 24px;
 }
 #page-gallery::before {
   content: ''; position: absolute; inset: 0;
@@ -479,36 +627,47 @@ body {
 }
 .blue-star-decor {
   position: absolute; color: #7ab8f5;
-  animation: starGlow 2.3s ease-in-out infinite alternate;
-  z-index: 0;
+  animation: starGlow 2.3s ease-in-out infinite alternate; z-index: 0;
 }
 @keyframes starGlow {
   from { opacity: 0.28; transform: scale(0.86); }
   to   { opacity: 0.95; transform: scale(1.14); }
 }
 .gallery-label {
-  font-family: 'Dancing Script', cursive; font-size: 3rem;
+  font-family: 'Dancing Script', cursive; font-size: 3.2rem;
   color: #8dd3f7; text-shadow: 0 2px 16px rgba(0,80,180,0.55);
   z-index: 2; position: relative;
 }
-.gallery-photos-wrap { display: flex; gap: 8px; align-items: flex-end; position: relative; z-index: 2; }
+.gallery-photos-wrap { display: flex; gap: 18px; align-items: flex-end; position: relative; z-index: 2; }
 .gallery-photo {
-  background: white; padding: 7px 7px 28px 7px;
-  box-shadow: 4px 10px 30px rgba(0,0,0,0.52);
-  width: 170px; transition: transform 0.38s cubic-bezier(0.34,1.56,0.64,1);
+  background: white; padding: 10px 10px 38px 10px;
+  box-shadow: 6px 14px 42px rgba(0,0,0,0.6);
+  width: 210px;
+  transition: transform 0.38s cubic-bezier(0.34,1.56,0.64,1);
+  position: relative;
 }
 .gallery-photo:nth-child(1) { transform: rotate(-5.5deg); }
-.gallery-photo:nth-child(2) { transform: rotate(0deg) translateY(-12px); }
+.gallery-photo:nth-child(2) { transform: rotate(0deg) translateY(-18px); }
 .gallery-photo:nth-child(3) { transform: rotate(5deg); }
-.gallery-photo:hover { transform: rotate(0deg) translateY(-10px) scale(1.05) !important; box-shadow: 6px 18px 44px rgba(0,0,0,0.62); }
+.gallery-photo:hover { transform: rotate(0deg) translateY(-14px) scale(1.05) !important; box-shadow: 8px 22px 54px rgba(0,0,0,0.7); }
 .gallery-photo img {
-  width: 100%; height: 154px; object-fit: cover; object-position: top center; display: block;
+  width: 100%; height: 195px; object-fit: cover; object-position: top center; display: block;
   background: linear-gradient(135deg, #ff9fd8, #ff6bae, #c0392b);
 }
-.gallery-photo .g-caption { font-family: 'Dancing Script', cursive; font-size: 0.82rem; color: #aaa; text-align: center; margin-top: 6px; }
+.gallery-photo .g-caption {
+  font-family: 'Dancing Script', cursive; font-size: 1rem; color: #aaa;
+  text-align: center; margin-top: 10px;
+}
+/* Decorative corner dots on gallery photos */
+.gallery-photo::before {
+  content: ''; position: absolute;
+  top: 5px; left: 5px; right: 5px; bottom: 5px;
+  border: 0.5px solid rgba(0,0,0,0.05);
+  pointer-events: none;
+}
 
 /* ═══════════════════════════════
-   PAGE 7 — MUSIC
+   PAGE 7 — MUSIC (upgraded)
 ═══════════════════════════════ */
 #page-music {
   background: linear-gradient(145deg, #0a0a18 0%, #12122e 55%, #0a0a18 100%);
@@ -519,71 +678,152 @@ body {
   content: ''; position: absolute; inset: 0;
   background: radial-gradient(ellipse at 60% 50%, rgba(100,55,190,0.15) 0%, transparent 60%);
 }
+
+/* Floating music notes */
+.music-note-float {
+  position: absolute;
+  color: rgba(255,255,255,0.12);
+  font-size: 3rem;
+  animation: noteFloat linear infinite;
+  pointer-events: none;
+}
+@keyframes noteFloat {
+  0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
+  10%  { opacity: 0.2; }
+  90%  { opacity: 0.05; }
+  100% { opacity: 0; transform: translateY(-80vh) rotate(30deg); }
+}
+
 .spotify-card {
   background: linear-gradient(135deg, #b71c1c, #c0392b);
-  border-radius: 14px; padding: 18px 22px;
-  display: flex; align-items: center; gap: 14px; width: 298px;
+  border-radius: 18px; padding: 20px 24px;
+  display: flex; align-items: center; gap: 16px; width: 312px;
   box-shadow: 0 8px 36px rgba(0,0,0,0.62), 0 0 0 1px rgba(255,255,255,0.08);
   position: relative; z-index: 1;
 }
 .album-thumb {
-  width: 64px; height: 64px; border-radius: 8px;
+  width: 72px; height: 72px; border-radius: 10px;
   object-fit: cover; flex-shrink: 0;
   box-shadow: 0 4px 16px rgba(0,0,0,0.48);
   background: linear-gradient(135deg, #ff9fd8, #c0392b);
 }
-.song-name { font-size: 0.87rem; font-weight: 600; color: white; line-height: 1.3; }
-.artist-name { font-size: 0.72rem; color: rgba(255,255,255,0.68); margin-top: 3px; }
-.sp-source { font-size: 0.63rem; color: rgba(255,255,255,0.38); margin-top: 5px; }
+.song-info { flex: 1; }
+.song-name { font-size: 0.92rem; font-weight: 600; color: white; line-height: 1.3; }
+.artist-name { font-size: 0.76rem; color: rgba(255,255,255,0.72); margin-top: 3px; }
+.sp-source { font-size: 0.62rem; color: rgba(255,255,255,0.38); margin-top: 5px; }
 .play-circle {
-  width: 42px; height: 42px; border-radius: 50%;
+  width: 46px; height: 46px; border-radius: 50%;
   background: white; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.98rem; color: #c0392b;
+  font-size: 1rem; color: #c0392b;
   border: none; flex-shrink: 0;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 3px 14px rgba(0,0,0,0.42);
 }
-.play-circle:hover { transform: scale(1.16); box-shadow: 0 0 22px rgba(255,255,255,0.32); }
+.play-circle:hover { transform: scale(1.18); box-shadow: 0 0 26px rgba(255,255,255,0.38); }
 .play-circle:active { transform: scale(0.9); }
-.cd-wrap { position: relative; width: 228px; height: 228px; flex-shrink: 0; z-index: 1; }
-.cd-disc {
-  width: 228px; height: 228px; border-radius: 50%;
-  background: conic-gradient(#1c1c1c 0deg, #2e2e2e 90deg, #111 180deg, #2e2e2e 270deg, #1c1c1c 360deg);
-  position: relative; overflow: hidden;
-  box-shadow: 0 0 0 3px #444, 0 0 0 6px #222, 0 10px 48px rgba(0,0,0,0.78);
+
+/* Progress bar */
+.progress-wrap {
+  width: 100%; margin-top: 14px;
+  position: relative; z-index: 1;
 }
-.cd-disc::before {
+.progress-bar-bg {
+  width: 100%; height: 3px;
+  background: rgba(255,255,255,0.18); border-radius: 3px; overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0.7), white);
+  border-radius: 3px; width: 0%;
+  transition: width 0.5s linear;
+}
+.progress-times {
+  display: flex; justify-content: space-between;
+  font-size: 0.65rem; color: rgba(255,255,255,0.35);
+  margin-top: 4px; font-family: 'Nunito', sans-serif;
+}
+
+/* Big album art on music page */
+.music-album-big {
+  position: relative; flex-shrink: 0; z-index: 1;
+}
+.album-vinyl {
+  width: 240px; height: 240px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #1a1a1a 28%, transparent 28%),
+    conic-gradient(#1c1c1c 0deg, #2e2e2e 90deg, #111 180deg, #2e2e2e 270deg, #1c1c1c 360deg);
+  position: relative; overflow: hidden;
+  box-shadow:
+    0 0 0 3px #444, 0 0 0 6px #1a1a1a, 0 0 0 8px #333,
+    0 12px 56px rgba(0,0,0,0.85),
+    0 0 60px rgba(150,50,255,0.08);
+}
+.album-vinyl::before {
   content: '';
   position: absolute; inset: 0; border-radius: 50%;
-  background: repeating-radial-gradient(circle, transparent, transparent 8px, rgba(255,255,255,0.03) 9px);
-  pointer-events: none; z-index: 1;
+  background: repeating-radial-gradient(circle, transparent, transparent 9px, rgba(255,255,255,0.025) 10px);
+  z-index: 1; pointer-events: none;
 }
-.cd-disc img {
-  width: 100%; height: 100%; object-fit: cover; object-position: top center;
-  border-radius: 50%; opacity: 0.86; mix-blend-mode: luminosity;
+.vinyl-cover-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  border-radius: 50%;
+  opacity: 0.7; mix-blend-mode: luminosity;
   background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
 }
-.cd-hole {
+.vinyl-center {
   position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  width: 46px; height: 46px; border-radius: 50%;
-  background: radial-gradient(circle, #c8c8c8 20%, #555 62%, #1a1a1a 100%);
+  transform: translate(-50%, -50%);
+  width: 52px; height: 52px; border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #d8d8d8, #666 55%, #1a1a1a 100%);
   z-index: 3;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.5);
 }
-.cd-text {
+.vinyl-center::after {
+  content: '';
   position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%,-50%) rotate(-25deg);
-  font-family: 'Dancing Script', cursive;
-  font-size: 0.62rem; color: rgba(255,255,255,0.5);
-  text-align: center; width: 112px; line-height: 1.5;
-  pointer-events: none; z-index: 2;
+  transform: translate(-50%, -50%);
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #111;
 }
-.cd-disc.spinning { animation: spinCD 4.2s linear infinite; }
-@keyframes spinCD { to { transform: rotate(360deg); } }
+.vinyl-label-text {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotate(-22deg);
+  font-family: 'Dancing Script', cursive;
+  font-size: 0.6rem; color: rgba(255,255,255,0.45);
+  text-align: center; width: 106px; line-height: 1.6;
+  pointer-events: none; z-index: 2;
+  margin-top: -14px;
+}
+.album-vinyl.spinning { animation: spinVinyl 4s linear infinite; }
+@keyframes spinVinyl { to { transform: rotate(360deg); } }
+
+/* Tonearm */
+.tonearm-wrap {
+  position: absolute; top: -18px; right: -22px; z-index: 5;
+}
+.tonearm {
+  width: 3px; height: 80px;
+  background: linear-gradient(to bottom, #ccc, #888);
+  border-radius: 2px;
+  transform-origin: top center;
+  transform: rotate(28deg);
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  transition: transform 0.8s ease;
+}
+.tonearm.playing { transform: rotate(14deg); }
+.tonearm-head {
+  width: 10px; height: 10px;
+  background: #aaa; border-radius: 2px;
+  margin-top: 2px; margin-left: -4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
 .music-mood {
-  color: rgba(255,255,255,0.48); font-size: 0.77rem;
-  text-align: center; font-style: italic; margin-top: 8px;
+  color: rgba(255,255,255,0.45); font-size: 0.77rem;
+  text-align: center; font-style: italic; margin-top: 10px;
   font-family: 'Playfair Display', serif; position: relative; z-index: 1;
 }
 
@@ -633,15 +873,12 @@ body {
       <div class="bow">🎀</div>
       <div class="corner-heart">💕</div>
       <div class="shimmer">
-        <img class="anime-img" id="lock-photo"
-          src="" alt="for chikuu"
-          style="width:196px; height:236px;">
+        <img class="anime-img" id="lock-photo" src="" alt="for chikuu" style="width:196px; height:236px;">
       </div>
       <div class="label">✨ for chikuu ✨</div>
       <div class="teddy">🧸</div>
     </div>
   </div>
-
   <div class="keypad-section">
     <div class="keypad-label">Enter passcode</div>
     <div class="passcode-boxes" id="pboxes">
@@ -677,7 +914,6 @@ body {
     <div class="cam-polaroid" id="cam-polaroid">
       <img class="anime-img" id="cam-photo" src="" alt="photo" style="height:126px;">
     </div>
-    <!-- Instax Mini 12 SVG -->
     <svg class="instax-svg" viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="1">
@@ -727,8 +963,7 @@ body {
   </div>
   <div style="display:flex;flex-direction:column;align-items:center;gap:22px;">
     <div class="big-polaroid shimmer">
-      <img class="anime-img" id="reveal-photo" src="" alt="chikuu"
-        style="width:208px;height:226px;">
+      <img class="anime-img" id="reveal-photo" src="" alt="chikuu" style="width:208px;height:226px;">
       <div class="plabel">i love you, chikuu 💕</div>
     </div>
     <button class="next-btn" onclick="goTo('page-hub')">NEXT →</button>
@@ -741,8 +976,6 @@ body {
   <div class="hub-title">Gifts for chikuu</div>
   <div class="hub-sub">tap any of these for you 💝</div>
   <div class="hub-icons-row">
-
-    <!-- Envelope -->
     <button class="hub-item" onclick="goTo('page-letter')">
       <div class="hub-icon-wrap">
         <div class="orbit-ring"></div>
@@ -751,22 +984,18 @@ body {
           <path d="M2 8 L28 30 L54 8" stroke="rgba(255,255,255,0.75)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M2 46 L21 27" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" fill="none"/>
           <path d="M54 46 L35 27" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" fill="none"/>
-          <!-- wax seal -->
           <circle cx="28" cy="38" r="6" fill="rgba(255,100,130,0.55)" stroke="rgba(255,200,210,0.7)" stroke-width="1"/>
           <text x="28" y="41.5" text-anchor="middle" font-size="7" fill="white" font-family="serif">♥</text>
         </svg>
       </div>
       <span class="hub-icon-label">Letter</span>
     </button>
-
-    <!-- Gallery -->
     <button class="hub-item" onclick="goTo('page-gallery')">
       <div class="hub-icon-wrap">
         <div class="orbit-ring" style="animation-delay:-0.9s;"></div>
         <svg class="hub-icon-svg" viewBox="0 0 56 48" fill="none">
           <rect x="2" y="12" width="52" height="34" rx="8" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.62)" stroke-width="1.5"/>
           <path d="M18 12 L14 4 L42 4 L38 12" fill="rgba(255,255,255,0.28)" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linejoin="round"/>
-          <!-- lens rings -->
           <circle cx="28" cy="29" r="10.5" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.68)" stroke-width="1.5"/>
           <circle cx="28" cy="29" r="6.5" fill="rgba(255,255,255,0.22)"/>
           <circle cx="28" cy="29" r="3" fill="rgba(255,255,255,0.55)"/>
@@ -776,8 +1005,6 @@ body {
       </div>
       <span class="hub-icon-label">Gallery</span>
     </button>
-
-    <!-- Music -->
     <button class="hub-item" onclick="goTo('page-music')">
       <div class="hub-icon-wrap">
         <div class="orbit-ring" style="animation-delay:-1.6s;"></div>
@@ -788,68 +1015,96 @@ body {
           <path d="M22 24 L46 20" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" stroke-linecap="round"/>
           <circle cx="17" cy="42" r="2.8" fill="rgba(255,200,225,0.75)"/>
           <circle cx="41" cy="38" r="2.8" fill="rgba(255,200,225,0.75)"/>
-          <!-- sparkle notes -->
           <text x="8" y="16" font-size="8" fill="rgba(255,255,255,0.4)">♪</text>
           <text x="46" y="10" font-size="7" fill="rgba(255,255,255,0.3)">♫</text>
         </svg>
       </div>
       <span class="hub-icon-label">Our Song</span>
     </button>
-
   </div>
 </div>
 
-<!-- PAGE 5 — LETTER -->
-<div class="page" id="page-letter" style="background:#f7ede9;">
-  <div class="letter-outer">
-    <div class="scallop-edge top"></div>
-    <div class="letter-inner">
-      <div class="letter-header">
-        <div class="letter-title-text">A Love Letter</div>
-        <div class="letter-meta">
-          <span>To: <em>Chikuu</em></span>
-          <span>From: <em>always yours 💕</em></span>
+<!-- PAGE 5 — LETTER (upgraded) -->
+<div class="page" id="page-letter">
+  <div class="letter-envelope-wrap">
+    <div class="letter-card">
+      <div class="letter-scallop-top"></div>
+      <div class="letter-body-wrap">
+        <div class="letter-inner">
+
+          <!-- Corner roses -->
+          <div class="letter-rose-tl">🌹</div>
+          <div class="letter-rose-tr">🌹</div>
+          <div class="letter-rose-bl">🌹</div>
+          <div class="letter-rose-br">🌹</div>
+
+          <!-- Header -->
+          <div class="letter-header">
+            <div class="letter-header-title">A Love Letter</div>
+            <div class="letter-header-line">
+              <div class="to-from">
+                <span>To: <em>Chikuu</em></span>
+                <span>From: <em>always yours 💕</em></span>
+              </div>
+              <div class="wax-seal"><span>❤️</span></div>
+            </div>
+          </div>
+
+          <!-- Photos float right -->
+          <div class="letter-photo-strip">
+            <div class="letter-photo-frame">
+              <img class="anime-img" id="letter-photo1" src="" alt="photo 1">
+              <div class="p-caption">us 💕</div>
+            </div>
+            <div class="letter-photo-frame">
+              <img class="anime-img" id="letter-photo2" src="" alt="photo 2">
+              <div class="p-caption">forever 🌸</div>
+            </div>
+          </div>
+
+          <!-- Salutation -->
+          <span class="letter-salutation">My love, Chikuu,</span>
+
+          <!-- Body -->
+          <div class="letter-body">
+            <p>Ever since you came into my life, everything feels brighter and more meaningful. Your smile, your laugh, the warmth you bring — it lights up every room you walk into.</p>
+            <p>I carry you in my heart always. No matter what life holds, my love for you will only ever grow stronger, deeper, and more certain with every passing day.</p>
+            <p>You are my favourite part of every day, chikuu. My everything. 🌸</p>
+          </div>
+
+          <div class="letter-divider"></div>
+
+          <!-- Signature -->
+          <div class="letter-sign-wrap">
+            <span class="letter-sign">— your love, forever 💕</span>
+            <div class="letter-heart-stamp">❤️</div>
+          </div>
+
         </div>
       </div>
-      <div class="letter-photos">
-        <img class="letter-photo" id="letter-photo1" src="" alt="photo 1">
-        <img class="letter-photo" id="letter-photo2" src="" alt="photo 2">
-      </div>
-      <span class="letter-salutation">My love, Chikuu</span>
-      <div class="letter-body">
-        My love, ever since you came into my life,
-        everything feels brighter and more meaningful.
-        Your smile, your laugh, the way you carry yourself —
-        your presence makes every single moment feel complete.
-        I carry you in my heart always, and no matter
-        what life holds, my love for you will only
-        ever grow stronger. You are my everything, chikuu. 🌸
-      </div>
-      <span class="letter-sign">— your love, forever 💕</span>
-      <div class="letter-heart">❤️</div>
+      <div class="letter-scallop-bottom"></div>
     </div>
-    <div class="scallop-edge bottom"></div>
   </div>
-  <div style="margin-top:22px;display:flex;gap:14px;">
+  <div style="margin-top:20px;display:flex;gap:14px;">
     <button class="next-btn" onclick="goTo('page-gallery')" style="background:#c0392b;border-color:#e05050;">NEXT →</button>
     <button class="next-btn" onclick="goTo('page-hub')">← Hub</button>
   </div>
 </div>
 
-<!-- PAGE 6 — GALLERY -->
-<div class="page" id="page-gallery" style="background:linear-gradient(145deg,#0c2461,#1e3799,#0c2461);position:relative;overflow:hidden;flex-direction:column;gap:18px;">
+<!-- PAGE 6 — GALLERY (upgraded) -->
+<div class="page" id="page-gallery">
   <div class="blue-star-decor" style="top:28px;left:44px;font-size:2.8rem;animation-delay:0s;">★</div>
   <div class="blue-star-decor" style="top:72px;right:55px;font-size:1.8rem;animation-delay:0.6s;">★</div>
   <div class="blue-star-decor" style="bottom:52px;left:70px;font-size:2.2rem;animation-delay:1.1s;">★</div>
   <div class="blue-star-decor" style="bottom:34px;right:45px;font-size:1.4rem;animation-delay:1.7s;">★</div>
-  <div style="position:absolute;top:20px;right:58px;font-size:4rem;opacity:0.22;filter:grayscale(0.3);">🎧</div>
+  <div style="position:absolute;top:20px;right:58px;font-size:4rem;opacity:0.18;filter:grayscale(0.3);">🎧</div>
   <div class="gallery-label">Best Moments, Chikuu!</div>
   <div class="gallery-photos-wrap">
     <div class="gallery-photo">
       <img class="anime-img" id="gallery-photo1" src="" alt="moment 1">
       <div class="g-caption">forever 💙</div>
     </div>
-    <div class="gallery-photo" style="transform:rotate(0deg) translateY(-12px);">
+    <div class="gallery-photo">
       <img class="anime-img" id="gallery-photo2" src="" alt="moment 2">
       <div class="g-caption">always 🌟</div>
     </div>
@@ -862,38 +1117,59 @@ body {
   <button class="back-link" onclick="goTo('page-hub')">← hub</button>
 </div>
 
-<!-- PAGE 7 — MUSIC -->
-<div class="page" id="page-music" style="background:linear-gradient(145deg,#0a0a18,#12122e,#0a0a18);flex-direction:row;gap:52px;padding:48px;align-items:center;position:relative;">
-  <div style="display:flex;flex-direction:column;gap:18px;align-items:center;position:relative;z-index:1;">
+<!-- PAGE 7 — MUSIC (upgraded) -->
+<div class="page" id="page-music">
+  <!-- Floating notes -->
+  <div class="music-note-float" style="left:8%;animation-duration:12s;animation-delay:0s;font-size:2.5rem;">♪</div>
+  <div class="music-note-float" style="left:22%;animation-duration:16s;animation-delay:3s;font-size:3.5rem;">♫</div>
+  <div class="music-note-float" style="left:75%;animation-duration:14s;animation-delay:6s;font-size:2rem;">♩</div>
+  <div class="music-note-float" style="left:88%;animation-duration:18s;animation-delay:1s;font-size:2.8rem;">♬</div>
+
+  <div style="display:flex;flex-direction:column;gap:16px;align-items:center;position:relative;z-index:1;">
+    <!-- Spotify card -->
     <div class="spotify-card">
-      <img class="album-thumb"
-        src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=200&h=200&fit=crop&q=85"
-        alt="album">
-      <div>
+      <img class="album-thumb" id="music-album-thumb" src="" alt="album">
+      <div class="song-info">
         <div class="song-name">A Thousand Years</div>
         <div class="artist-name">Christina Perri</div>
-        <div class="sp-source">Save on Spotify</div>
+        <div class="sp-source">♡ save on Spotify</div>
       </div>
       <button class="play-circle" id="play-btn">▶</button>
+    </div>
+    <!-- Progress bar -->
+    <div class="progress-wrap" style="width:312px;">
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+      <div class="progress-times">
+        <span id="time-current">0:00</span>
+        <span>4:46</span>
+      </div>
     </div>
     <div class="music-mood">this song reminds me of you, chikuu 💕</div>
     <button class="next-btn" onclick="goTo('page-hub')">← Back to Gifts</button>
   </div>
-  <div class="cd-wrap">
-    <div class="cd-disc" id="cd-disc">
-      <img class="anime-img" id="cd-photo" src="" alt="cd"
-        style="width:228px;height:228px;border-radius:50%;opacity:0.86;mix-blend-mode:luminosity;background:linear-gradient(135deg,#3a1c71,#d76d77,#ffaf7b);">
-      <div class="cd-text">for chikuu,<br>love of my life...<br>always & forever</div>
-      <div class="cd-hole"></div>
+
+  <!-- Vinyl record with tonearm -->
+  <div class="music-album-big" style="position:relative;z-index:1;">
+    <div class="album-vinyl" id="album-vinyl">
+      <img class="vinyl-cover-img anime-img" id="cd-photo" src="" alt="album art">
+      <div class="vinyl-label-text">for chikuu,<br>love of my life...<br>always & forever</div>
+      <div class="vinyl-center"></div>
+    </div>
+    <div class="tonearm-wrap">
+      <div class="tonearm" id="tonearm"></div>
+      <div class="tonearm-head"></div>
     </div>
   </div>
+
   <button class="back-link" onclick="goTo('page-hub')">← hub</button>
 </div>
 
 <script>
 /* ════ PETALS ════ */
 const petalsC = document.getElementById('petals-container');
-['🌸','🌺','✿','❀','💮','🌷','🌹'].forEach((sym, i) => {
+['🌸','🌺','✿','❀','💮','🌷','🌹'].forEach((sym) => {
   for (let j = 0; j < 2; j++) {
     const p = document.createElement('span');
     p.className = 'petal'; p.textContent = sym;
@@ -902,52 +1178,41 @@ const petalsC = document.getElementById('petals-container');
   }
 });
 
-/* ════ ANIME IMAGE LOADER ════ */
-// Uses waifu.pics public API — free, reliable, beautiful anime art
-const imgCache = [];
+/* ════ IMAGE LOADER ════ */
 const waifuEndpoint = 'https://api.waifu.pics/sfw/waifu';
-
 async function fetchAnimeImage() {
   try {
     const r = await fetch(waifuEndpoint);
     const d = await r.json();
     return d.url;
   } catch(e) {
-    // Fallback: picsum with anime-adjacent seeds
     const seeds = ['sakura','yuki','hana','luna','rose','star','flower'];
     const seed = seeds[Math.floor(Math.random()*seeds.length)];
     return `https://picsum.photos/seed/${seed}${Date.now()%1000}/400/500`;
   }
 }
-
 async function loadAllImages() {
   const imageIds = [
     'lock-photo','cam-photo','reveal-photo',
     'letter-photo1','letter-photo2',
     'gallery-photo1','gallery-photo2','gallery-photo3',
-    'cd-photo'
+    'cd-photo','music-album-thumb'
   ];
-  // Fetch all in parallel
   const urls = await Promise.all(imageIds.map(() => fetchAnimeImage()));
   imageIds.forEach((id, i) => {
     const el = document.getElementById(id);
     if (!el) return;
     const img = new Image();
     img.onload = () => { el.src = urls[i]; el.classList.add('loaded'); };
-    img.onerror = () => {
-      el.src = `https://picsum.photos/seed/${id}${i}/400/500`;
-      el.classList.add('loaded');
-    };
+    img.onerror = () => { el.src = `https://picsum.photos/seed/${id}${i}/400/500`; el.classList.add('loaded'); };
     img.src = urls[i];
   });
 }
-
-// Load images right away
 loadAllImages();
 
 /* ════ PAGE NAV ════ */
 function goTo(id) {
-  document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); p.style.display=''; });
+  document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); });
   const next = document.getElementById(id);
   if (next) next.classList.add('active');
 }
@@ -988,21 +1253,43 @@ document.getElementById('see-btn').addEventListener('click', () => {
   setTimeout(() => {
     btn.style.display = 'none';
     const nb = document.createElement('button');
-    nb.className = 'next-btn';
-    nb.textContent = 'NEXT →'; nb.style.marginTop = '8px';
+    nb.className = 'next-btn'; nb.textContent = 'NEXT →'; nb.style.marginTop = '8px';
     nb.onclick = () => goTo('page-reveal');
     document.getElementById('page-camera').appendChild(nb);
   }, 1650);
 });
 
-/* ════ MUSIC ════ */
+/* ════ MUSIC + PROGRESS ════ */
 let playing = false;
+let progressInterval = null;
+let progressSec = 0;
+const totalSec = 286; // 4:46
+
+function formatTime(s) {
+  const m = Math.floor(s/60);
+  const sec = Math.floor(s%60);
+  return `${m}:${sec.toString().padStart(2,'0')}`;
+}
+
 document.getElementById('play-btn').addEventListener('click', () => {
   playing = !playing;
-  document.getElementById('cd-disc').classList.toggle('spinning', playing);
+  document.getElementById('album-vinyl').classList.toggle('spinning', playing);
+  document.getElementById('tonearm').classList.toggle('playing', playing);
   document.getElementById('play-btn').textContent = playing ? '⏸' : '▶';
-  if (playing) playNote(528);
+  if (playing) {
+    playNote(528);
+    progressInterval = setInterval(() => {
+      progressSec = Math.min(progressSec + 1, totalSec);
+      const pct = (progressSec / totalSec) * 100;
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('time-current').textContent = formatTime(progressSec);
+      if (progressSec >= totalSec) { clearInterval(progressInterval); playing = false; document.getElementById('play-btn').textContent = '▶'; document.getElementById('album-vinyl').classList.remove('spinning'); document.getElementById('tonearm').classList.remove('playing'); }
+    }, 1000);
+  } else {
+    clearInterval(progressInterval);
+  }
 });
+
 function playNote(freq) {
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -1034,7 +1321,7 @@ function spawnSparkles() {
   }
 }
 
-/* ════ HUB HOVER MICRO-SOUND ════ */
+/* ════ HUB HOVER SOUND ════ */
 document.querySelectorAll('.hub-item').forEach((item, i) => {
   item.addEventListener('mouseenter', () => playNote([660, 698, 740][i % 3]));
 });

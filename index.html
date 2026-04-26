@@ -136,13 +136,13 @@ html,body{width:100%;height:100%;font-family:'Poppins',sans-serif;background:#c0
 .polaroid-out img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;object-position:top;display:block;}
 .polaroid-out .po-label{font-family:'Dancing Script',cursive;font-size:.65rem;color:#ccc;text-align:center;margin-top:3px;}
 
-/* When .shoot class added → eject downward out of camera */
+/* Eject polaroid to the LEFT so it never covers the Next button */
 @keyframes ejectDown{
-  0%  {clip-path:inset(92% 0 0 0); bottom:36%; transform:translateX(-50%) rotate(0deg);}
-  35% {clip-path:inset(0%  0 0 0); bottom:36%; transform:translateX(-50%) rotate(0deg);}
-  100%{clip-path:inset(0%  0 0 0); bottom:-28%; transform:translateX(-55%) rotate(-5deg);}
+  0%  {clip-path:inset(92% 0 0 0); bottom:36%; left:50%; transform:translateX(-50%) rotate(0deg);}
+  35% {clip-path:inset(0%  0 0 0); bottom:36%; left:50%; transform:translateX(-50%) rotate(0deg);}
+  100%{clip-path:inset(0%  0 0 0); bottom:52%; left:4%;  transform:translateX(0%) rotate(-10deg);}
 }
-.polaroid-out.shoot{animation:ejectDown 2s cubic-bezier(.22,1,.36,1) forwards;}
+.polaroid-out.shoot{animation:ejectDown 2s cubic-bezier(.22,1,.36,1) forwards;pointer-events:none;}
 
 /* Flash */
 .flash-overlay{
@@ -537,6 +537,8 @@ html,body{width:100%;height:100%;font-family:'Poppins',sans-serif;background:#c0
   </div>
 
   <button class="shoot-btn" id="shoot-btn">📸 Take a Picture!</button>
+  <!-- Pre-placed Next button — hidden until shot is taken, always above back link -->
+  <button class="next-btn" id="cam-next-btn" onclick="goTo('page-reveal')" style="display:none;position:relative;z-index:50;">NEXT →</button>
   <button class="back-link" onclick="goTo('page-lock')">← back</button>
 </div>
 
@@ -729,99 +731,45 @@ html,body{width:100%;height:100%;font-family:'Poppins',sans-serif;background:#c0
 </div>
 
 <script>
-/* ═══ FIXED CUTE ANIME GIRL IMAGES ═══
-   Using picrew-style / known-good anime girl image sources.
-   We use 4 specific waifu.im images by tag that are guaranteed
-   to be cute anime girls — waifu.im API is reliable.
-   We fetch 4 unique ones and reuse across all slots.
-*/
-const ANIME_IMGS = [
-  "https://api.waifu.im/search?included_tags=waifu&is_nsfw=false&many=false&gif=false",
-  "https://api.waifu.im/search?included_tags=waifu&is_nsfw=false&many=false&gif=false",
-  "https://api.waifu.im/search?included_tags=waifu&is_nsfw=false&many=false&gif=false",
-  "https://api.waifu.im/search?included_tags=waifu&is_nsfw=false&many=false&gif=false",
-];
+/* ═══ SINGLE ANIME GIRL IMAGE — fetched once, used everywhere ═══ */
+async function loadImages() {
+  let url = null;
 
-// Fallback: beautiful hand-picked stable anime girl images from nekos.best
-const FALLBACK = [
-  "https://nekos.best/api/v2/neko",
-  "https://nekos.best/api/v2/neko",
-  "https://nekos.best/api/v2/neko",
-  "https://nekos.best/api/v2/neko",
-];
-
-let cachedUrls = [null,null,null,null];
-
-async function fetchAnime(index) {
-  if (cachedUrls[index]) return cachedUrls[index];
-  // Try waifu.im first
+  // Try waifu.im
   try {
     const r = await fetch("https://api.waifu.im/search?included_tags=waifu&is_nsfw=false");
     const d = await r.json();
-    if (d.images && d.images[0]) {
-      cachedUrls[index] = d.images[0].url;
-      return cachedUrls[index];
-    }
+    if (d.images && d.images[0]) url = d.images[0].url;
   } catch(e) {}
-  // Try waifu.pics
-  try {
-    const r = await fetch("https://api.waifu.pics/sfw/waifu");
-    const d = await r.json();
-    if (d.url) {
-      cachedUrls[index] = d.url;
-      return cachedUrls[index];
-    }
-  } catch(e) {}
-  // Final fallback: nekos.best
-  try {
-    const r = await fetch("https://nekos.best/api/v2/neko");
-    const d = await r.json();
-    if (d.results && d.results[0]) {
-      cachedUrls[index] = d.results[0].url;
-      return cachedUrls[index];
-    }
-  } catch(e) {}
-  return null;
-}
 
-// Fetch 4 unique anime girl images on load
-async function loadImages() {
-  // Fetch 4 in parallel but from the same pool (waifu.im)
-  const fetches = [0,1,2,3].map(i =>
-    fetch("https://api.waifu.im/search?included_tags=waifu&is_nsfw=false")
-      .then(r => r.json())
-      .then(d => { if(d.images&&d.images[0]) cachedUrls[i] = d.images[0].url; })
-      .catch(async () => {
-        try {
-          const r = await fetch("https://api.waifu.pics/sfw/waifu");
-          const d = await r.json();
-          if(d.url) cachedUrls[i] = d.url;
-        } catch(e2) {}
-      })
-  );
-  await Promise.all(fetches);
+  // Fallback: waifu.pics
+  if (!url) {
+    try {
+      const r = await fetch("https://api.waifu.pics/sfw/waifu");
+      const d = await r.json();
+      if (d.url) url = d.url;
+    } catch(e) {}
+  }
 
-  // Map: which slot uses which cached image index
-  const slots = {
-    'img-lock':    0,
-    'img-cam':     0,
-    'img-reveal':  1,
-    'img-ltr1':    2,
-    'img-ltr2':    3,
-    'img-g1':      0,
-    'img-g2':      1,
-    'img-g3':      2,
-    'img-vinyl':   1,
-    'img-album':   3,
-  };
+  // Fallback: nekos.best
+  if (!url) {
+    try {
+      const r = await fetch("https://nekos.best/api/v2/neko");
+      const d = await r.json();
+      if (d.results && d.results[0]) url = d.results[0].url;
+    } catch(e) {}
+  }
 
-  Object.entries(slots).forEach(([id, idx]) => {
+  if (!url) return; // nothing loaded, leave placeholder gradient
+
+  // Apply the SAME single image to every photo slot
+  const allIds = ['img-lock','img-cam','img-reveal','img-ltr1','img-ltr2','img-g1','img-g2','img-g3','img-vinyl','img-album'];
+  allIds.forEach(id => {
     const el = document.getElementById(id);
-    if (!el || !cachedUrls[idx]) return;
+    if (!el) return;
     const img = new Image();
-    img.onload = () => { el.src = cachedUrls[idx]; };
-    img.onerror = () => {};
-    img.src = cachedUrls[idx];
+    img.onload = () => { el.src = url; };
+    img.src = url;
   });
 }
 loadImages();
@@ -882,13 +830,10 @@ document.getElementById('shoot-btn').addEventListener('click',()=>{
   const btn=document.getElementById('shoot-btn');
   btn.textContent='✨ developing...';
   btn.style.opacity='.5';btn.style.pointerEvents='none';
-  // Show next button after animation
+  // Show next button after animation — in the pre-made hidden slot
   setTimeout(()=>{
     btn.style.display='none';
-    const nb=document.createElement('button');
-    nb.className='next-btn';nb.textContent='NEXT →';
-    nb.onclick=()=>goTo('page-reveal');
-    document.getElementById('page-camera').appendChild(nb);
+    document.getElementById('cam-next-btn').style.display='inline-block';
   },2200);
 });
 
